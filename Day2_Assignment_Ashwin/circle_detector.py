@@ -62,7 +62,7 @@ def detect_circles(gray_image, dp=1, minDist=20, param1=50, param2=40, minRadius
     return circles
 
 
-def visualize_circles(image, circles, save_path=None):
+def visualize_circles(image, circles, minRadius, maxRadius, save_path=None):
     '''
     Docstring for visualize_circles
     
@@ -71,19 +71,30 @@ def visualize_circles(image, circles, save_path=None):
     :param save_path: Optional path to save the image (with circles shown)
     '''
 
+    SIZE_COLOURS = {
+        "small": (255, 0, 0),    # blue
+        "medium": (0, 255, 255), # yellow
+        "large": (0, 255, 0)     # green
+    }
+
+
     annotated = image.copy()
 
     if circles is not None:
         for i, (x, y, r) in enumerate(circles[0]):
-            cv2.circle(annotated, (x, y), r, (0, 255, 0), 2)
+            size = classify_size(r, minRadius, maxRadius)
+            colour = SIZE_COLOURS[size]
+
+            cv2.circle(annotated, (x, y), r, colour, 2)
+
             cv2.circle(annotated, (x, y), 2, (0, 0, 255), 3)
             cv2.putText(
                 annotated,
-                f"ID {i}: r={r}",
+                f"ID {i}: r={r} ({size})",
                 (x - 40, y - r - 10),
                 cv2.FONT_HERSHEY_SIMPLEX,
                 0.5,
-                (255, 0, 0),
+                colour,
                 1
             )
 
@@ -135,6 +146,29 @@ def calculate_statistics(circles):
 
     return stats
 
+def classify_size(radius, min_r, max_r):
+    """
+    Docstring for classify_size
+    
+    Args:
+        :param radius: radius of the considered circle
+        :param min_r: min radius of all detected
+        :param max_r: max radius of all detected
+
+    Return:
+        :rtype: Literal['small', 'medium', 'large']
+    """
+
+    if max_r - min_r < 10:
+        return "medium"
+
+    if radius < min_r + (max_r - min_r) / 3:
+        return "small"
+    elif radius < min_r + 2 * (max_r - min_r) / 3:
+        return "medium"
+    else:
+        return "large"
+
 
 def main():
     '''
@@ -148,7 +182,7 @@ def main():
         acc = int(input("Enter accumulator threshold value (default 40): ") or 40)
     except ValueError:
         acc = 40
-        
+
     if not os.path.exists(image_path):
         print("Error: File does not exist")
         return
@@ -177,8 +211,8 @@ def main():
     for key, value in stats.items():
         print(f"{key}: {value}")
 
-    
-    visualize_circles(image, circles, save_path=os.path.join(results_dir,f"{base_name}_result.jpg"))
+    if circles is not None:
+        visualize_circles(image, circles, minRadius=stats["min_radius"], maxRadius=stats["max_radius"], save_path=os.path.join(results_dir,f"{base_name}_result.jpg"))
 
 
 if __name__ == "__main__":

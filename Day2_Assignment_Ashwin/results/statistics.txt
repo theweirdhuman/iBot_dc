@@ -52,3 +52,12 @@ avg_radius: 54.5
 accumulator threshold: 60
 
 
+Circle Detection Statistics for file bubble
+
+count: 15
+min_radius: 15
+max_radius: 58
+avg_radius: 26.0
+accumulator threshold: 35
+
+

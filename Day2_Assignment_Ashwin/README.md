@@ -29,6 +29,11 @@ Implement a circle detection program using the Hough Circle Transform to detect,
 
 The accumulator threshold (param2) is taken as user input at runtime, allowing interactive tuning for different images. Other parameters are set to stable defaults and adjusted during testing as needed.
 
+## Size Classification
+
+Detected circles are classified into small, medium, and large categories based on their relative radii. Each category is visualized using a distinct color to enable intuitive comparison.
+
+
 ## Statistics
 
 For each image, the following are reported:
@@ -74,6 +79,7 @@ Enter:
 results/  
 ├── <image_name>_result.jpg  
 └── statistics.txt
+
 
 
 ## Notes
