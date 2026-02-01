@@ -1,0 +1,54 @@
+Circle Detection Statistics for file shirt
+
+count: 20
+min_radius: 25
+max_radius: 28
+avg_radius: 26.65
+accumulator threshold: 57
+
+
+Circle Detection Statistics for file bubble
+
+count: 11
+min_radius: 19
+max_radius: 58
+avg_radius: 28.454545454545453
+accumulator threshold: 40
+
+
+Circle Detection Statistics for file bubble
+
+count: 27
+min_radius: 15
+max_radius: 58
+avg_radius: 27.74074074074074
+accumulator threshold: 30
+
+
+Circle Detection Statistics for file bubble
+
+count: 15
+min_radius: 15
+max_radius: 58
+avg_radius: 26.0
+accumulator threshold: 35
+
+
+Circle Detection Statistics for file basket
+
+count: 5
+min_radius: 13
+max_radius: 92
+avg_radius: 35.0
+accumulator threshold: 50
+
+
+Circle Detection Statistics for file basket
+
+count: 2
+min_radius: 17
+max_radius: 92
+avg_radius: 54.5
+accumulator threshold: 60
+
+
