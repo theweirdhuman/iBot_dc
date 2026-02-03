@@ -1,0 +1,46 @@
+/**
+* NAME: Ashwin K
+* RNO: EE25B018
+* DESC: LED breathes in one second
+*/
+
+int del = 1961; //micros
+unsigned long int lastupdate = 0;
+int inc = 1;
+int out = 0;
+uint8_t led = 6; //needs to be pwm
+
+void setup()
+{
+  pinMode(led,OUTPUT);
+  
+}
+
+void loop()
+{
+  if(micros() - lastupdate >= del)
+  {
+    lastupdate=micros();
+    if(inc)
+    {
+	  out++;
+      if(out>255)
+      {
+        out = 255;
+        inc = 0;
+      }
+    }
+    else
+    {
+      out--;
+      if(out<0)
+      {
+        out = 0;
+        inc = 1;
+      }
+    }
+        
+    analogWrite(led,out);
+  }
+  
+}
