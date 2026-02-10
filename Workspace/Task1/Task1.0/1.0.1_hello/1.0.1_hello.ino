@@ -1,6 +1,6 @@
 /**
-* NAME: Ashwin K
-* RNO: EE25B018
+* TASK: 1.0.1
+* NAME: Hello world, blinking LED
 * DESC: LED blinks with a frequency of 18Hz (rno, can be any set frequency)
 */
 

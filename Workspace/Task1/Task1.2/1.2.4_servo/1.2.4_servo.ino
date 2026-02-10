@@ -13,7 +13,7 @@ uint8_t servoPin = 6;
 void setup()
 {
   pinMode(servoPin, OUTPUT);
-  motor.attach(6);
+  motor.attach(servoPin;
 }
 
 void loop()

@@ -1,7 +1,7 @@
 /** 
-* NAME: Ashwin K
-* RNO: EE25B018
-* DESC: Read data from ultrasound sensor and display the distance on the Serial monitor
+* TASK: 1.1.4
+* NAME: Ultrasonic
+* DESC: Read data from ultrasonic sensor and display the distance on the Serial monitor
 */
 
 uint8_t trig = 2;
